@@ -1,22 +1,37 @@
+import adapter.WebAdapter;
+import adapter.WebClient;
+import adapter.WebService;
 import builder_pattern.car.BmwM5Builder;
 import builder_pattern.car.Car;
 import builder_pattern.car.CarBuilder;
 import builder_pattern.person.Person;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-//        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-//        primaryStage.setTitle("Hello World");
-//        primaryStage.setScene(new Scene(root, 300, 275));
-//        primaryStage.show();
-//
+        Parent root = FXMLLoader.load(getClass().getResource("observable/sample.fxml"));
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.show();
 
 
-//        Builder design pattern
+
+    }
+
+
+    public static void main(String[] args) {
+
+
+        /*==============================================================================
+         *                         Builder Design Pattern
+         * ==============================================================================*/
+
 
         Person mehran =
                 new Person("Mehran","","Rafiee",22,183,65, Person.Gender.MALE);
@@ -31,8 +46,8 @@ public class Main extends Application {
                 .setGender(Person.Gender.MALE)
                 .build();
 
-        System.out.println(mehran);
-        System.out.println(mehran_with_builder);
+//        System.out.println(mehran);
+//        System.out.println(mehran_with_builder);
 
 
 //        Car
@@ -50,14 +65,29 @@ public class Main extends Application {
                 .setColor("Black")
                 .build();
 
-        System.out.println(car);
-        System.out.println(custom_car);
-        System.out.println(bmw_m5);
-
-    }
+//        System.out.println(car);
+//        System.out.println(custom_car);
+//        System.out.println(bmw_m5);
 
 
-    public static void main(String[] args) {
+
+        /*==============================================================================
+         *                         Adapter Design Pattern
+         * ==============================================================================*/
+
+        WebService service = new WebService("127.0.0.1");
+        WebAdapter adapter = new WebAdapter();
+        WebClient client = new WebClient(adapter);
+
+        adapter.connect(service);
+//        client.doWork();
+
+        /*==============================================================================
+         *                         Observable Design Pattern
+         * ==============================================================================*/
+
+
+
         launch(args);
     }
 }
