@@ -1,5 +1,7 @@
 # DesignPatterns
-A presentation about Design Patterns in Software Engineering
+A presentation about Design Patterns in Software Engineering [English]
+
+Implement some famous patterns in Java.
 
 ## Some useful links
 * [Design Patterns [Article]](https://sourcemaking.com/design_patterns)
